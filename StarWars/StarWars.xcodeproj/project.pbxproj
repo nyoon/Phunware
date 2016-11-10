@@ -14,6 +14,7 @@
 		86506F721DD4215E00112EDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86506F711DD4215E00112EDA /* Assets.xcassets */; };
 		86506F751DD4215E00112EDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86506F731DD4215E00112EDA /* LaunchScreen.storyboard */; };
 		86506F801DD4215E00112EDA /* StarWarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F7F1DD4215E00112EDA /* StarWarsTests.swift */; };
+		86506F8E1DD4228100112EDA /* TimelineEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F8D1DD4228100112EDA /* TimelineEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		86506F7B1DD4215E00112EDA /* StarWarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86506F7F1DD4215E00112EDA /* StarWarsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsTests.swift; sourceTree = "<group>"; };
 		86506F811DD4215E00112EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86506F8D1DD4228100112EDA /* TimelineEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				86506F671DD4215E00112EDA /* AppDelegate.swift */,
-				86506F691DD4215E00112EDA /* ViewController.swift */,
-				86506F6B1DD4215E00112EDA /* Main.storyboard */,
+				86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */,
+				86506F8A1DD4222400112EDA /* Models */,
+				86506F8B1DD4222A00112EDA /* Views */,
+				86506F8C1DD4223100112EDA /* Controllers */,
 				86506F711DD4215E00112EDA /* Assets.xcassets */,
 				86506F731DD4215E00112EDA /* LaunchScreen.storyboard */,
 				86506F761DD4215E00112EDA /* Info.plist */,
-				86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */,
 			);
 			path = StarWars;
 			sourceTree = "<group>";
@@ -97,6 +100,30 @@
 				86506F811DD4215E00112EDA /* Info.plist */,
 			);
 			path = StarWarsTests;
+			sourceTree = "<group>";
+		};
+		86506F8A1DD4222400112EDA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				86506F8D1DD4228100112EDA /* TimelineEvent.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		86506F8B1DD4222A00112EDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86506F6B1DD4215E00112EDA /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		86506F8C1DD4223100112EDA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				86506F691DD4215E00112EDA /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +234,7 @@
 				86506F6A1DD4215E00112EDA /* ViewController.swift in Sources */,
 				86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */,
 				86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */,
+				86506F8E1DD4228100112EDA /* TimelineEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
