@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F671DD4215E00112EDA /* AppDelegate.swift */; };
-		86506F6A1DD4215E00112EDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F691DD4215E00112EDA /* ViewController.swift */; };
 		86506F6D1DD4215E00112EDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86506F6B1DD4215E00112EDA /* Main.storyboard */; };
 		86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */; };
 		86506F721DD4215E00112EDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86506F711DD4215E00112EDA /* Assets.xcassets */; };
@@ -16,6 +15,12 @@
 		86506F801DD4215E00112EDA /* StarWarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F7F1DD4215E00112EDA /* StarWarsTests.swift */; };
 		86506F8E1DD4228100112EDA /* TimelineEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F8D1DD4228100112EDA /* TimelineEvent.swift */; };
 		86506F901DD4243A00112EDA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F8F1DD4243A00112EDA /* CoreDataStack.swift */; };
+		86506F931DD4294200112EDA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F921DD4294200112EDA /* Date.swift */; };
+		86506F951DD430F700112EDA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F941DD430F700112EDA /* Image.swift */; };
+		86506F971DD4370D00112EDA /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F961DD4370D00112EDA /* TimelineCell.swift */; };
+		86F063001DD4ADD200A9F274 /* TimelineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F062FF1DD4ADD200A9F274 /* TimelineDataManager.swift */; };
+		86FD63741DD56233000088E8 /* TimelineEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */; };
+		86FD63761DD58924000088E8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FD63751DD58924000088E8 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +36,6 @@
 /* Begin PBXFileReference section */
 		86506F641DD4215E00112EDA /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86506F671DD4215E00112EDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86506F691DD4215E00112EDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		86506F6C1DD4215E00112EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86506F6F1DD4215E00112EDA /* StarWars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StarWars.xcdatamodel; sourceTree = "<group>"; };
 		86506F711DD4215E00112EDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +46,12 @@
 		86506F811DD4215E00112EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86506F8D1DD4228100112EDA /* TimelineEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEvent.swift; sourceTree = "<group>"; };
 		86506F8F1DD4243A00112EDA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		86506F921DD4294200112EDA /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		86506F941DD430F700112EDA /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		86506F961DD4370D00112EDA /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		86F062FF1DD4ADD200A9F274 /* TimelineDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataManager.swift; sourceTree = "<group>"; };
+		86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEventListViewController.swift; sourceTree = "<group>"; };
+		86FD63751DD58924000088E8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +98,9 @@
 				86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */,
 				86506F8A1DD4222400112EDA /* Models */,
 				86506F8B1DD4222A00112EDA /* Views */,
-				86506F8C1DD4223100112EDA /* Controllers */,
+				86F062FE1DD4AD9400A9F274 /* DataManager */,
+				86506F8C1DD4223100112EDA /* ViewControllers */,
+				86506F911DD4292D00112EDA /* Helper */,
 				86506F711DD4215E00112EDA /* Assets.xcassets */,
 				86506F731DD4215E00112EDA /* LaunchScreen.storyboard */,
 				86506F761DD4215E00112EDA /* Info.plist */,
@@ -117,16 +129,35 @@
 			isa = PBXGroup;
 			children = (
 				86506F6B1DD4215E00112EDA /* Main.storyboard */,
+				86506F961DD4370D00112EDA /* TimelineCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		86506F8C1DD4223100112EDA /* Controllers */ = {
+		86506F8C1DD4223100112EDA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				86506F691DD4215E00112EDA /* ViewController.swift */,
+				86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */,
 			);
-			name = Controllers;
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		86506F911DD4292D00112EDA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				86FD63751DD58924000088E8 /* Reachability.swift */,
+				86506F921DD4294200112EDA /* Date.swift */,
+				86506F941DD430F700112EDA /* Image.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		86F062FE1DD4AD9400A9F274 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				86F062FF1DD4ADD200A9F274 /* TimelineDataManager.swift */,
+			);
+			name = DataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86506F951DD430F700112EDA /* Image.swift in Sources */,
 				86506F901DD4243A00112EDA /* CoreDataStack.swift in Sources */,
-				86506F6A1DD4215E00112EDA /* ViewController.swift in Sources */,
+				86FD63741DD56233000088E8 /* TimelineEventListViewController.swift in Sources */,
+				86506F971DD4370D00112EDA /* TimelineCell.swift in Sources */,
+				86506F931DD4294200112EDA /* Date.swift in Sources */,
 				86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */,
 				86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */,
+				86F063001DD4ADD200A9F274 /* TimelineDataManager.swift in Sources */,
+				86FD63761DD58924000088E8 /* Reachability.swift in Sources */,
 				86506F8E1DD4228100112EDA /* TimelineEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +484,7 @@
 				86506F861DD4215E00112EDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86506F871DD4215E00112EDA /* Build configuration list for PBXNativeTarget "StarWarsTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +493,7 @@
 				86506F891DD4215E00112EDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
