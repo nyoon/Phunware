@@ -29,7 +29,7 @@ class TimelineEventListViewController: UIViewController {
 		
 		let fetchRequest: NSFetchRequest<TimelineEvent> = TimelineEvent.fetchRequest()
 		fetchRequest.sortDescriptors = [
-			NSSortDescriptor(key: "date", ascending: false)
+			NSSortDescriptor(key: "date", ascending: true)
 		]
 		
 		fetchedResultsController = NSFetchedResultsController(
