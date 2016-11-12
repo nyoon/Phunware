@@ -22,6 +22,7 @@
 		86506F931DD4294200112EDA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F921DD4294200112EDA /* Date.swift */; };
 		86506F951DD430F700112EDA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F941DD430F700112EDA /* Image.swift */; };
 		86506F971DD4370D00112EDA /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F961DD4370D00112EDA /* TimelineCell.swift */; };
+		8694539E1DD7895E00D8F06B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8694539D1DD7895E00D8F06B /* Assets.swift */; };
 		86F063001DD4ADD200A9F274 /* TimelineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F062FF1DD4ADD200A9F274 /* TimelineDataManager.swift */; };
 		86FD63741DD56233000088E8 /* TimelineEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */; };
 		86FD63761DD58924000088E8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FD63751DD58924000088E8 /* Reachability.swift */; };
@@ -57,6 +58,7 @@
 		86506F921DD4294200112EDA /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		86506F941DD430F700112EDA /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		86506F961DD4370D00112EDA /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		8694539D1DD7895E00D8F06B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		86F062FF1DD4ADD200A9F274 /* TimelineDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataManager.swift; sourceTree = "<group>"; };
 		86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEventListViewController.swift; sourceTree = "<group>"; };
 		86FD63751DD58924000088E8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		8611D9351DD64FC3006F9F98 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8694539D1DD7895E00D8F06B /* Assets.swift */,
 				86506F711DD4215E00112EDA /* Assets.xcassets */,
 			);
 			name = Assets;
@@ -293,6 +296,7 @@
 				8611D93B1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift in Sources */,
 				86506F971DD4370D00112EDA /* TimelineCell.swift in Sources */,
 				86506F931DD4294200112EDA /* Date.swift in Sources */,
+				8694539E1DD7895E00D8F06B /* Assets.swift in Sources */,
 				8611D9391DD6926A006F9F98 /* CustomNavigationView.swift in Sources */,
 				86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */,
 				86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */,

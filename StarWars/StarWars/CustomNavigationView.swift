@@ -24,4 +24,11 @@ class CustomNavigationView: UIView {
 	var backButtonAction: (() -> ())?
 	var shareButtonAction: (() -> ())?
 	
+	override func awakeFromNib() {
+		backButton.setTitle("", for: .normal)
+		backButton.setImage(Assets.imageOfBack(), for: .normal)
+
+		shareButton.setTitle("", for: .normal)
+		shareButton.setImage(Assets.imageOfShare(), for: .normal)
+	}
 }

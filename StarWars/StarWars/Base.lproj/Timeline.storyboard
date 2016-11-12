@@ -273,14 +273,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="65"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZR-uJ-NtJ">
-                                        <rect key="frame" x="10" y="25" width="34" height="30"/>
+                                        <rect key="frame" x="0.0" y="25" width="34" height="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="backButtonTappedWithSender:" destination="ftc-Fl-1ER" eventType="touchUpInside" id="VIp-R2-H2w"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSs-rn-DE5">
-                                        <rect key="frame" x="974" y="25" width="40" height="30"/>
+                                        <rect key="frame" x="984" y="25" width="40" height="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Share"/>
                                         <connections>
                                             <action selector="shareButtonTappedWithSender:" destination="ftc-Fl-1ER" eventType="touchUpInside" id="TCM-oI-Dxk"/>
@@ -289,10 +291,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="LSs-rn-DE5" secondAttribute="trailing" constant="10" id="CeS-oL-V73"/>
+                                    <constraint firstAttribute="trailing" secondItem="LSs-rn-DE5" secondAttribute="trailing" id="CeS-oL-V73"/>
                                     <constraint firstAttribute="height" constant="65" id="IkL-fw-eiQ"/>
                                     <constraint firstAttribute="bottom" secondItem="SZR-uJ-NtJ" secondAttribute="bottom" constant="10" id="qHo-bx-NZv"/>
-                                    <constraint firstItem="SZR-uJ-NtJ" firstAttribute="leading" secondItem="ftc-Fl-1ER" secondAttribute="leading" constant="10" id="xq9-pD-AaJ"/>
+                                    <constraint firstItem="SZR-uJ-NtJ" firstAttribute="leading" secondItem="ftc-Fl-1ER" secondAttribute="leading" id="xq9-pD-AaJ"/>
                                     <constraint firstAttribute="bottom" secondItem="LSs-rn-DE5" secondAttribute="bottom" constant="10" id="z3b-VX-dwl"/>
                                 </constraints>
                                 <connections>

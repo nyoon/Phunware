@@ -21,10 +21,10 @@ class TimelineEventListViewController: UIViewController {
         super.viewDidLoad()
 		
 		if Reachability.isInternetAvailable {
-			TimelineEvent.clear()
+			//TimelineEvent.clear()
 		}
 		
-		loadData()
+		//loadData()
 		print(CoreDataStack.shared.persistentStoreURL)
 		
 		let fetchRequest: NSFetchRequest<TimelineEvent> = TimelineEvent.fetchRequest()
@@ -65,8 +65,7 @@ class TimelineEventListViewController: UIViewController {
 		activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 		
-		dataManager.loadData {
-			(data, response, error) in
+		dataManager.loadData { (data, response, error) in
 			
 			activityView.removeFromSuperview()
 			
