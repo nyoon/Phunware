@@ -57,6 +57,22 @@ class TimelineEventListViewController: UIViewController {
 		}
 	}
 	
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		
+		guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+		let width = collectionView.frame.width
+		
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2, height: 250)
+			collectionView.reloadData()
+		} else {
+			flowLayout.itemSize = CGSize(width: width, height: 250)
+			collectionView.reloadData()
+		}
+		
+	}
+	
 	private func loadData() {
 		let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 		activityView.startAnimating()
@@ -157,18 +173,6 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 				}
 			})
 
-		}
-	}
-}
-
-extension TimelineEventListViewController: UICollectionViewDelegateFlowLayout {
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = collectionView.frame.width
-		
-		if UIDevice.current.userInterfaceIdiom == .pad {
-			return CGSize(width: width / 2, height: 250)
-		} else {
-			return CGSize(width: width, height: 250)
 		}
 	}
 }
