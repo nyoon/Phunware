@@ -12,6 +12,7 @@ class CustomNavigationView: UIView {
 	
 	@IBOutlet weak var backButton: UIButton!
 	@IBOutlet weak var shareButton: UIButton!
+	@IBOutlet weak var titleLabel: UILabel!
 	
 	@IBAction func backButtonTapped(sender: UIButton) {
 		backButtonAction?()

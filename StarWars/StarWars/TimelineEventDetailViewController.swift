@@ -83,6 +83,8 @@ class TimelineEventDetailViewController: UIViewController {
 		locationLine2Label.text = timelineEvent.locationLine2
 		phoneLabel.text = timelineEvent.phone
 		detailLabel.text = timelineEvent.detail
+		
+		customNavigationView.titleLabel.text = timelineEvent.title
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -110,13 +112,6 @@ extension TimelineEventDetailViewController: UIScrollViewDelegate {
 		let alpha = contentOffsetY / alphaOffset
 		
 		customNavigationView.backgroundColor = UIColor.lightGray.withAlphaComponent(alpha)
-		
-		// Shifts the title into position
-		let titlePosition = titleLabel.frame.origin
-		
-		if contentOffsetY >= titlePosition.y {
-
-		}
-		
+		customNavigationView.titleLabel.textColor = UIColor.white.withAlphaComponent(alpha)
 	}
 }
