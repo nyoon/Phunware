@@ -173,16 +173,6 @@ extension TimelineEventListViewController: UICollectionViewDelegateFlowLayout {
 	}
 }
 
-extension TimelineEventListViewController: UICollectionViewDataSourcePrefetching {
-	func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-		
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-		
-	}
-}
-
 extension TimelineEventListViewController: NSFetchedResultsControllerDelegate {
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 		collectionView.reloadData()
