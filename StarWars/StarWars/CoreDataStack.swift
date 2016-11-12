@@ -13,32 +13,32 @@ class CoreDataStack: NSObject {
 	static let module = "StarWars"
 	static let shared = CoreDataStack()
 	
-	lazy var persistentContainer: NSPersistentContainer = {
-		let container = NSPersistentContainer(name: module)
-		do {
-			try container.persistentStoreCoordinator.addPersistentStore(
-				ofType: NSSQLiteStoreType,
-				configurationName: nil,
-				at: self.persistentStoreURL,
-				options: [
-					NSMigratePersistentStoresAutomaticallyOption: true,
-					NSInferMappingModelAutomaticallyOption: true
-				]
-			)
-		} catch {
-			fatalError("Persistent store error! \(error)")
+	func saveContext() {
+		guard context.hasChanges || saveManagedObjectContext.hasChanges else {
+			return
 		}
-		container.loadPersistentStores {
-			(storeDescription, error) in
-			if let error = error as NSError? {
-				fatalError("Unresolved error \(error), \(error.userInfo)")
+		
+		context.performAndWait() {
+			do {
+				try self.context.save()
+			} catch {
+				fatalError("Error saving main managed object context! \(error)")
 			}
 		}
-		return container
-	}()
+		
+		saveManagedObjectContext.perform() {
+			do {
+				try self.saveManagedObjectContext.save()
+			} catch {
+				fatalError("Error saving private managed object context! \(error)")
+			}
+		}
+		
+	}
 	
-	lazy var context: NSManagedObjectContext = {
-		return self.persistentContainer.viewContext
+	lazy var managedObjectModel: NSManagedObjectModel = {
+		let modelURL = Bundle.main.url(forResource: module, withExtension: "momd")!
+		return NSManagedObjectModel(contentsOf: modelURL)!
 	}()
 	
 	lazy var applicationDocumentsDirectory: URL = {
@@ -49,39 +49,31 @@ class CoreDataStack: NSObject {
 		return self.applicationDocumentsDirectory.appendingPathComponent("\(module).sqlite")
 	}()
 	
-	lazy var persistentStoreDescription: NSPersistentStoreDescription = {
-		let persistentStoreDescription = NSPersistentStoreDescription()
-		persistentStoreDescription.shouldMigrateStoreAutomatically = true
-		persistentStoreDescription.shouldInferMappingModelAutomatically = false
+	lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+		let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
 		
-		return persistentStoreDescription
+		do {
+			try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+			                                   configurationName: nil,
+			                                   at: self.persistentStoreURL,
+			                                   options: [NSMigratePersistentStoresAutomaticallyOption: true,
+			                                             NSInferMappingModelAutomaticallyOption: false])
+		} catch {
+			fatalError("Persistent store error! \(error)")
+		}
+		
+		return coordinator
 	}()
 	
-	// MARK: - Core Data Saving support
+	private lazy var saveManagedObjectContext: NSManagedObjectContext = {
+		let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+		moc.persistentStoreCoordinator = self.persistentStoreCoordinator
+		return moc
+	}()
 	
-	func saveContext () {
-		let context = persistentContainer.viewContext
-		let privateContext = persistentContainer.newBackgroundContext()
-		
-		guard context.hasChanges || privateContext.hasChanges else {
-			return
-		}
-		
-		context.performAndWait {
-			do {
-				try context.save()
-			} catch {
-				fatalError("Error saving main managed object context! \(error)")
-			}
-		}
-		
-		privateContext.perform {
-			do {
-				try privateContext.save()
-			} catch {
-				fatalError("Error saving private managed object context! \(error)")
-			}
-		}
-	}
-
+	lazy var context: NSManagedObjectContext = {
+		let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+		managedObjectContext.parent = self.saveManagedObjectContext
+		return managedObjectContext
+	}()
 }

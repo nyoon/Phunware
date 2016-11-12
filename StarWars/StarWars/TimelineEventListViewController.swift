@@ -78,8 +78,14 @@ class TimelineEventListViewController: UIViewController {
 		activityView.startAnimating()
 		view.addSubview(activityView)
 		activityView.translatesAutoresizingMaskIntoConstraints = false
-		activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		if #available(iOS 9.0, *) {
+			activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+			activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		} else {
+			// Fallback on earlier versions
+			NSLayoutConstraint(item: activityView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+			NSLayoutConstraint(item: activityView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+		}
 		
 		dataManager.loadData { (data, response, error) in
 			

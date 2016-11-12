@@ -14,11 +14,25 @@ class TimelineEvent: NSManagedObject {
 	static func clear() {
 		// Clear the record out before populating
 		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TimelineEvent")
-		let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-		do {
-			try CoreDataStack.shared.context.execute(batchDeleteRequest)
-		} catch {
-			print("Could not delete all records of timelineEvent")
+		if #available(iOS 9.0, *) {
+			let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+			do {
+				try CoreDataStack.shared.context.execute(batchDeleteRequest)
+			} catch {
+				print("Could not delete all records of timelineEvent")
+			}
+		} else {
+			// Fallback on earlier versions
+			do {
+				if let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest) as? [TimelineEvent] {
+					for timelineEvent in timelineEvents {
+						CoreDataStack.shared.context.delete(timelineEvent)
+						CoreDataStack.shared.saveContext()
+					}
+				}
+			} catch {
+				print("Could not delete all records of timelineEvent")
+			}
 		}
 	}
 	
