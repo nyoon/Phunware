@@ -12,8 +12,25 @@ extension String {
 	var date: Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss.SSS"
+
 		let formattedTimestamp = self.components(separatedBy: CharacterSet(charactersIn: "TZ")).joined()
 		
 		return dateFormatter.date(from: formattedTimestamp)!
+	}
+}
+
+extension Date {
+	func formattedDate() -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .medium
+		dateFormatter.timeStyle = .short
+
+		let dateString = dateFormatter.string(from: self)
+		let characterSet = CharacterSet(charactersIn: ",")
+		var dateStrings = dateString.components(separatedBy: characterSet)
+		dateStrings.insert(",", at: 1)
+		dateStrings.insert(" at", at: 2)
+		
+		return dateStrings.reduce("", +)
 	}
 }
