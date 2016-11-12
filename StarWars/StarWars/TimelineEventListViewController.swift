@@ -137,28 +137,27 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 			guard let cell = self.collectionView.cellForItem(at: indexPath)! as? TimelineCell else { fatalError("Cast to TimelineCell has failed") }
 			
 			// Custom animation
-			delay(seconds: 0.5) {
-				UIView.transition(with: cell.overlayView, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-					cell.overlayView.isHidden = true
-					self.navigationController?.navigationBar.isHidden = true
-					for label in [cell.dateLabel, cell.titleLabel, cell.locationLabel, cell.detailLabel] {
-						label?.isHidden = true
-					}
-				}, completion: nil)
-			}
 
-			delay(seconds: 1.0) {
-				UIView.animate(withDuration: 2.0, animations: {
-					self.yOffset = cell.frame.origin.y - collectionView.contentOffset.y
-					detailViewController.transitioningDelegate = self
-					self.present(detailViewController, animated: true, completion: nil)
-				}, completion: { _ in
-					cell.overlayView.isHidden = false
-					for label in [cell.dateLabel, cell.titleLabel, cell.locationLabel, cell.detailLabel] {
-						label?.isHidden = false
-					}
-				})
-			}
+			UIView.transition(with: cell.overlayView, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+				cell.overlayView.isHidden = true
+				self.navigationController?.navigationBar.isHidden = true
+				for label in [cell.dateLabel, cell.titleLabel, cell.locationLabel, cell.detailLabel] {
+					label?.isHidden = true
+				}
+			}, completion: nil)
+
+
+			UIView.animate(withDuration: 2.0, animations: {
+				self.yOffset = cell.frame.origin.y - collectionView.contentOffset.y
+				detailViewController.transitioningDelegate = self
+				self.present(detailViewController, animated: true, completion: nil)
+			}, completion: { _ in
+				cell.overlayView.isHidden = false
+				for label in [cell.dateLabel, cell.titleLabel, cell.locationLabel, cell.detailLabel] {
+					label?.isHidden = false
+				}
+			})
+
 		}
 	}
 }

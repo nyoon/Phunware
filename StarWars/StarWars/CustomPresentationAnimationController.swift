@@ -26,7 +26,7 @@ class CustomPresentationAnimationController: NSObject, UIViewControllerAnimatedT
 		toViewController.view.frame = finalFrameForViewController.offsetBy(dx: 0, dy: yOffset)
 		containerView.addSubview(toViewController.view)
 		
-		UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.2, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.0, options: [.curveEaseInOut], animations: {
+		UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.0, options: [.curveEaseInOut], animations: {
 			fromViewController.view.alpha = 1
 			toViewController.view.frame = finalFrameForViewController
 			toViewController.customOverlayView.isHidden = false
