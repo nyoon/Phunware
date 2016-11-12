@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8611D9321DD597C3006F9F98 /* TimelineEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611D9311DD597C3006F9F98 /* TimelineEventDetailViewController.swift */; };
+		8611D9341DD645F5006F9F98 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611D9331DD645F5006F9F98 /* CustomOverlayView.swift */; };
+		8611D9391DD6926A006F9F98 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611D9381DD6926A006F9F98 /* CustomNavigationView.swift */; };
+		8611D93B1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611D93A1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift */; };
 		86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86506F671DD4215E00112EDA /* AppDelegate.swift */; };
-		86506F6D1DD4215E00112EDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86506F6B1DD4215E00112EDA /* Main.storyboard */; };
+		86506F6D1DD4215E00112EDA /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86506F6B1DD4215E00112EDA /* Timeline.storyboard */; };
 		86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */; };
 		86506F721DD4215E00112EDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86506F711DD4215E00112EDA /* Assets.xcassets */; };
 		86506F751DD4215E00112EDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86506F731DD4215E00112EDA /* LaunchScreen.storyboard */; };
@@ -34,9 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8611D9311DD597C3006F9F98 /* TimelineEventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEventDetailViewController.swift; sourceTree = "<group>"; };
+		8611D9331DD645F5006F9F98 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		8611D9381DD6926A006F9F98 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		8611D93A1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationAnimationController.swift; sourceTree = "<group>"; };
 		86506F641DD4215E00112EDA /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86506F671DD4215E00112EDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86506F6C1DD4215E00112EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		86506F6C1DD4215E00112EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Timeline.storyboard; sourceTree = "<group>"; };
 		86506F6F1DD4215E00112EDA /* StarWars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StarWars.xcdatamodel; sourceTree = "<group>"; };
 		86506F711DD4215E00112EDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86506F741DD4215E00112EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8611D9351DD64FC3006F9F98 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				86506F711DD4215E00112EDA /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		86506F5B1DD4215D00112EDA = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +109,8 @@
 		86506F661DD4215E00112EDA /* StarWars */ = {
 			isa = PBXGroup;
 			children = (
+				86506F761DD4215E00112EDA /* Info.plist */,
+				86506F731DD4215E00112EDA /* LaunchScreen.storyboard */,
 				86506F671DD4215E00112EDA /* AppDelegate.swift */,
 				86506F8F1DD4243A00112EDA /* CoreDataStack.swift */,
 				86506F6E1DD4215E00112EDA /* StarWars.xcdatamodeld */,
@@ -101,9 +119,7 @@
 				86F062FE1DD4AD9400A9F274 /* DataManager */,
 				86506F8C1DD4223100112EDA /* ViewControllers */,
 				86506F911DD4292D00112EDA /* Helper */,
-				86506F711DD4215E00112EDA /* Assets.xcassets */,
-				86506F731DD4215E00112EDA /* LaunchScreen.storyboard */,
-				86506F761DD4215E00112EDA /* Info.plist */,
+				8611D9351DD64FC3006F9F98 /* Assets */,
 			);
 			path = StarWars;
 			sourceTree = "<group>";
@@ -128,8 +144,10 @@
 		86506F8B1DD4222A00112EDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				86506F6B1DD4215E00112EDA /* Main.storyboard */,
+				86506F6B1DD4215E00112EDA /* Timeline.storyboard */,
 				86506F961DD4370D00112EDA /* TimelineCell.swift */,
+				8611D9331DD645F5006F9F98 /* CustomOverlayView.swift */,
+				8611D9381DD6926A006F9F98 /* CustomNavigationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -138,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				86FD63731DD56233000088E8 /* TimelineEventListViewController.swift */,
+				8611D93A1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift */,
+				8611D9311DD597C3006F9F98 /* TimelineEventDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -247,7 +267,7 @@
 			files = (
 				86506F751DD4215E00112EDA /* LaunchScreen.storyboard in Resources */,
 				86506F721DD4215E00112EDA /* Assets.xcassets in Resources */,
-				86506F6D1DD4215E00112EDA /* Main.storyboard in Resources */,
+				86506F6D1DD4215E00112EDA /* Timeline.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +288,12 @@
 				86506F951DD430F700112EDA /* Image.swift in Sources */,
 				86506F901DD4243A00112EDA /* CoreDataStack.swift in Sources */,
 				86FD63741DD56233000088E8 /* TimelineEventListViewController.swift in Sources */,
+				8611D9321DD597C3006F9F98 /* TimelineEventDetailViewController.swift in Sources */,
+				8611D9341DD645F5006F9F98 /* CustomOverlayView.swift in Sources */,
+				8611D93B1DD6B40B006F9F98 /* CustomPresentationAnimationController.swift in Sources */,
 				86506F971DD4370D00112EDA /* TimelineCell.swift in Sources */,
 				86506F931DD4294200112EDA /* Date.swift in Sources */,
+				8611D9391DD6926A006F9F98 /* CustomNavigationView.swift in Sources */,
 				86506F681DD4215E00112EDA /* AppDelegate.swift in Sources */,
 				86506F701DD4215E00112EDA /* StarWars.xcdatamodeld in Sources */,
 				86F063001DD4ADD200A9F274 /* TimelineDataManager.swift in Sources */,
@@ -297,12 +321,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		86506F6B1DD4215E00112EDA /* Main.storyboard */ = {
+		86506F6B1DD4215E00112EDA /* Timeline.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				86506F6C1DD4215E00112EDA /* Base */,
 			);
-			name = Main.storyboard;
+			name = Timeline.storyboard;
 			sourceTree = "<group>";
 		};
 		86506F731DD4215E00112EDA /* LaunchScreen.storyboard */ = {
