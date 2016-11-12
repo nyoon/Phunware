@@ -166,10 +166,10 @@ extension TimelineEventListViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let width = collectionView.frame.width
 		
-		if width <= 414 {
-			return CGSize(width: width, height: 250)
-		} else {
+		if UIDevice.current.userInterfaceIdiom == .pad {
 			return CGSize(width: width / 2, height: 250)
+		} else {
+			return CGSize(width: width, height: 250)
 		}
 	}
 }
