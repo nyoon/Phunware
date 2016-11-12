@@ -33,7 +33,7 @@ class TimelineEventDetailViewController: UIViewController {
 		scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentSize.height + 100)
 
 		//Setup button callbacks
-		customNavigationView.backButtonAction = {
+		customNavigationView.backButtonAction = { [unowned self] in
 			let transition = CATransition()
 			transition.duration = 0.8
 			transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
@@ -43,8 +43,11 @@ class TimelineEventDetailViewController: UIViewController {
 			self.dismiss(animated: false, completion: nil)
 		}
 		
-		customNavigationView.shareButtonAction = {
-			
+		customNavigationView.shareButtonAction = { [unowned self] in
+			guard let title = self.titleLabel.text, let detail = self.detailLabel.text else { return }
+			let activityItems = [title, detail]
+			let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+			self.present(activityViewController, animated: true, completion: nil)
 		}
     }
 	

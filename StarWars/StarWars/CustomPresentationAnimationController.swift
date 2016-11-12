@@ -33,7 +33,6 @@ class CustomPresentationAnimationController: NSObject, UIViewControllerAnimatedT
 		}, completion: { _ in
 			transitionContext.completeTransition(true)
 			fromViewController.view.alpha = 1.0
-
 		})
 		
 	}
