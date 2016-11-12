@@ -15,5 +15,6 @@ class TimelineCell: UICollectionViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
 	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet weak var overlayView: UIView!
 	
 }
