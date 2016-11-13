@@ -141,6 +141,10 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 		timelineCell.detailLabel.text = timelineEvent.detail
 		timelineCell.backgroundImageView.image = getImageFromDocumentDirectory(for: timelineEvent)
 		
+		// Rasterization for scrolling improvements
+		timelineCell.layer.shouldRasterize = true
+		timelineCell.layer.rasterizationScale = UIScreen.main.scale
+		
 		return timelineCell
 	}
 	
