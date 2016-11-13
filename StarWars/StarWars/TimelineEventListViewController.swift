@@ -22,9 +22,9 @@ class TimelineEventListViewController: UIViewController {
 		
 		if Reachability.isInternetAvailable {
 			TimelineEvent.clear()
+			loadData()
 		}
 		
-		loadData()
 		print(CoreDataStack.shared.persistentStoreURL)
 		
 		let fetchRequest: NSFetchRequest<TimelineEvent> = TimelineEvent.fetchRequest()
@@ -40,6 +40,24 @@ class TimelineEventListViewController: UIViewController {
 		)
 		
 		fetchedResultsController.delegate = self
+		
+		if TimelineEvent.images.isEmpty {
+			do {
+				let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest)
+				guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { print("Could not retrieve file"); return }
+				
+				for timelineEvent in timelineEvents {
+					if let imageHost = timelineEvent.imageHost {
+						let path = documentDirectory.appendingPathComponent(imageHost)
+						let data = try Data(contentsOf: path, options: .alwaysMapped)
+						let image = UIImage(data: data)
+						TimelineEvent.images[imageHost] = image
+					}
+				}
+			} catch {
+				print("Error fetching timelineEvents")
+			}
+		}
     }
 
 	override func viewWillAppear(_ animated: Bool) {
