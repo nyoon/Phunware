@@ -31,7 +31,10 @@ class TimelineEventDetailViewController: UIViewController {
         super.viewDidLoad()
 
 		scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentSize.height + 100)
-
+		setupCustomNavigationBar()
+    }
+	
+	private func setupCustomNavigationBar() {
 		//Setup button callbacks
 		customNavigationView.backButtonAction = { [unowned self] in
 			let transition = CATransition()
@@ -52,7 +55,7 @@ class TimelineEventDetailViewController: UIViewController {
 			}
 			self.present(activityViewController, animated: true, completion: nil)
 		}
-    }
+	}
 	
 	private var contentSize: CGRect {
 		var contentRect: CGRect = .zero

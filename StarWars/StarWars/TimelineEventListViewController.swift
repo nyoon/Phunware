@@ -13,9 +13,9 @@ class TimelineEventListViewController: UIViewController {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
-	var fetchedResultsController: NSFetchedResultsController<TimelineEvent>!
-	let dataManager = TimelineDataManager()
-	var yOffset: CGFloat?
+	fileprivate var fetchedResultsController: NSFetchedResultsController<TimelineEvent>!
+	fileprivate let dataManager = TimelineDataManager()
+	fileprivate var yOffset: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,12 @@ class TimelineEventListViewController: UIViewController {
 			loadData()
 		}
 		
+		setupFetchRequest()
+		TimelineEvent.storeImagesFromDocumentDirectory()
 		print(CoreDataStack.shared.persistentStoreURL)
-		
+    }
+	
+	private func setupFetchRequest() {
 		let fetchRequest: NSFetchRequest<TimelineEvent> = TimelineEvent.fetchRequest()
 		fetchRequest.sortDescriptors = [
 			NSSortDescriptor(key: "date", ascending: true)
@@ -46,25 +50,7 @@ class TimelineEventListViewController: UIViewController {
 		} catch {
 			fatalError("There was an error fetching the list of devices!")
 		}
-		
-		if TimelineEvent.images.isEmpty && fetchedResultsController.fetchedObjects != nil {
-			do {
-				let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest)
-				guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { print("Could not retrieve file"); return }
-				
-				for timelineEvent in timelineEvents {
-					if let imageHost = timelineEvent.imageHost {
-						let path = documentDirectory.appendingPathComponent(imageHost)
-						let data = try Data(contentsOf: path, options: .alwaysMapped)
-						let image = UIImage(data: data)
-						TimelineEvent.images[imageHost] = image
-					}
-				}
-			} catch {
-				print("Error fetching timelineEvents")
-			}
-		}
-    }
+	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -93,17 +79,11 @@ class TimelineEventListViewController: UIViewController {
 	
 	private func loadData() {
 		let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-		activityView.startAnimating()
 		view.addSubview(activityView)
+		activityView.startAnimating()
+		
 		activityView.translatesAutoresizingMaskIntoConstraints = false
-		if #available(iOS 9.0, *) {
-			activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-			activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-		} else {
-			// Fallback on earlier versions
-			NSLayoutConstraint(item: activityView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-			NSLayoutConstraint(item: activityView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-		}
+		activityView.addCenterConstraints(to: view)
 		
 		dataManager.loadData { (data, response, error) in
 			
@@ -177,7 +157,6 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 				}
 			}, completion: nil)
 
-
 			UIView.animate(withDuration: 2.0, animations: {
 				self.yOffset = cell.frame.origin.y - collectionView.contentOffset.y
 				detailViewController.transitioningDelegate = self
@@ -193,12 +172,6 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 	}
 }
 
-extension TimelineEventListViewController: NSFetchedResultsControllerDelegate {
-	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		collectionView.reloadData()
-	}
-}
-
 extension TimelineEventListViewController: UIViewControllerTransitioningDelegate {
 	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 		let animationController = CustomPresentationAnimationController()
@@ -207,5 +180,11 @@ extension TimelineEventListViewController: UIViewControllerTransitioningDelegate
 		guard let yOffset = yOffset else { fatalError("Y offset was not set") }
 		animationController.yOffset = yOffset + navigationBar.frame.height + UIApplication.shared.statusBarFrame.size.height
 		return animationController
+	}
+}
+
+extension TimelineEventListViewController: NSFetchedResultsControllerDelegate {
+	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+		collectionView.reloadData()
 	}
 }

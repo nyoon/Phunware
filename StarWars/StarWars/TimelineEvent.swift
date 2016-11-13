@@ -39,6 +39,30 @@ class TimelineEvent: NSManagedObject {
 		}
 	}
 	
+	static func storeImagesFromDocumentDirectory() {
+		do {
+			let fetchRequest: NSFetchRequest<TimelineEvent> = TimelineEvent.fetchRequest()
+			let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest)
+			
+			// Check to see if CoreData has results and if images array is empty
+			if images.isEmpty && !timelineEvents.isEmpty {
+				let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest)
+				guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { print("Could not retrieve file"); return }
+				
+				for timelineEvent in timelineEvents {
+					if let imageHost = timelineEvent.imageHost {
+						let path = documentDirectory.appendingPathComponent(imageHost)
+						let data = try Data(contentsOf: path, options: .alwaysMapped)
+						let image = UIImage(data: data)
+						images[imageHost] = image
+					}
+				}
+			}
+		} catch {
+			print("Could not fetch timelineEvents")
+		}
+	}
+
 	static func insert(into entity: NSEntityDescription, for jsonArray: [[String: AnyObject?]]) {
 		for event in jsonArray {
 			guard let id = event["id"] as? Int16,
@@ -84,8 +108,8 @@ class TimelineEvent: NSManagedObject {
 							timelineEvent.imageHost = url.lastPathComponent
 							CoreDataStack.shared.saveContext()
 							
-							guard let image = UIImage(data: data),
-								let imageHost = timelineEvent.imageHost else { fatalError("Could not create image") }
+							guard let image = UIImage(data: data), let imageHost = timelineEvent.imageHost
+								else { fatalError("Could not create image") }
 							images[imageHost] = image
 						} catch {
 							print("Failed to save image data to disk")
@@ -94,6 +118,10 @@ class TimelineEvent: NSManagedObject {
 				}
 			}
 		}
+	}
+	
+	private func getImageAndSave(withImageHost imageHost: String) {
+		
 	}
 }
 
