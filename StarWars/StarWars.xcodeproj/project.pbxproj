@@ -236,7 +236,6 @@
 				TargetAttributes = {
 					86506F631DD4215E00112EDA = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5K785Q5R9U;
 						ProvisioningStyle = Automatic;
 					};
 					86506F7A1DD4215E00112EDA = {
@@ -445,7 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5K785Q5R9U;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StarWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -459,7 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5K785Q5R9U;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StarWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
