@@ -11,7 +11,7 @@ import UIKit
 // Use url to get download image data and save to disk
 extension URL {
 	func downloadImageAndSave(withCompletion completionHandler: @escaping (_ data: Data?, _ repsonse: URLResponse?, _ error: Error?) -> ()) {
-		print("Downloading image") // TODO: Maybe add spinner for fun
+		print("Downloading image")
 		getData { (data, response, error) in
 			print("Retreived image")
 			DispatchQueue.main.async {
