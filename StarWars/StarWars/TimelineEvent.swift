@@ -119,10 +119,6 @@ class TimelineEvent: NSManagedObject {
 			}
 		}
 	}
-	
-	private func getImageAndSave(withImageHost imageHost: String) {
-		
-	}
 }
 
 extension TimelineEvent {
