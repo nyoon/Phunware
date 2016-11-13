@@ -108,23 +108,6 @@ class TimelineEventListViewController: UIViewController {
 			
 		}
 	}
-	
-	fileprivate func getImageFromDocumentDirectory(for timelineEvent: TimelineEvent) -> UIImage? {
-		var image: UIImage? = nil
-		
-		guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
-			let imageHost = timelineEvent.imageHost
-			else { return image }
-		let path = documentDirectory.appendingPathComponent(imageHost)
-		do {
-			let data = try Data(contentsOf: path, options: .alwaysMapped)
-			image = UIImage(data: data)
-		} catch {
-			print(error)
-		}
-		
-		return image
-	}
 }
 
 extension TimelineEventListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -139,7 +122,10 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 		timelineCell.titleLabel.text = timelineEvent.title
 		timelineCell.locationLabel.text = "\(timelineEvent.locationLine1) \(timelineEvent.locationLine2)"
 		timelineCell.detailLabel.text = timelineEvent.detail
-		timelineCell.backgroundImageView.image = getImageFromDocumentDirectory(for: timelineEvent)
+		timelineCell.backgroundImageView.image = nil
+		if let imageHost = timelineEvent.imageHost {
+			timelineCell.backgroundImageView.image = TimelineEvent.images[imageHost]
+		}
 		
 		// Rasterization for scrolling improvements
 		timelineCell.layer.shouldRasterize = true
@@ -157,7 +143,9 @@ extension TimelineEventListViewController: UICollectionViewDelegate, UICollectio
 		if let detailViewController = storyboard.instantiateViewController(withIdentifier: "TimelineEventDetailViewController") as? TimelineEventDetailViewController {
 			let timelineEvent = fetchedResultsController.object(at: indexPath)
 			detailViewController.timelineEvent = timelineEvent
-			detailViewController.image = getImageFromDocumentDirectory(for: timelineEvent)
+			if let imageHost = timelineEvent.imageHost {
+				detailViewController.image = TimelineEvent.images[imageHost]
+			}
 			
 			guard let cell = self.collectionView.cellForItem(at: indexPath)! as? TimelineCell else { fatalError("Cast to TimelineCell has failed") }
 			

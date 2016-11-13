@@ -10,9 +10,12 @@ import UIKit
 import CoreData
 
 class TimelineEvent: NSManagedObject {
+	static var images = [String : UIImage]()
 	
 	static func clear() {
 		// Clear the record out before populating
+		images = [String : UIImage]()
+		
 		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TimelineEvent")
 		if #available(iOS 9.0, *) {
 			let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -80,6 +83,10 @@ class TimelineEvent: NSManagedObject {
 							try data.write(to: path, options: .atomic)
 							timelineEvent.imageHost = url.lastPathComponent
 							CoreDataStack.shared.saveContext()
+							
+							guard let image = UIImage(data: data),
+								let imageHost = timelineEvent.imageHost else { fatalError("Could not create image") }
+							images[imageHost] = image
 						} catch {
 							print("Failed to save image data to disk")
 						}
