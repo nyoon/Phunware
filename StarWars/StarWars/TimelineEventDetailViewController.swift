@@ -47,6 +47,9 @@ class TimelineEventDetailViewController: UIViewController {
 			guard let title = self.titleLabel.text, let detail = self.detailLabel.text else { return }
 			let activityItems = [title, detail]
 			let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+			if activityViewController.responds(to: #selector(getter: UIViewController.popoverPresentationController)) {
+				activityViewController.popoverPresentationController?.sourceView = self.view
+			}
 			self.present(activityViewController, animated: true, completion: nil)
 		}
     }
