@@ -41,7 +41,13 @@ class TimelineEventListViewController: UIViewController {
 		
 		fetchedResultsController.delegate = self
 		
-		if TimelineEvent.images.isEmpty {
+		do {
+			try fetchedResultsController.performFetch()
+		} catch {
+			fatalError("There was an error fetching the list of devices!")
+		}
+		
+		if TimelineEvent.images.isEmpty && fetchedResultsController.fetchedObjects != nil {
 			do {
 				let timelineEvents = try CoreDataStack.shared.context.fetch(fetchRequest)
 				guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { print("Could not retrieve file"); return }
@@ -67,12 +73,6 @@ class TimelineEventListViewController: UIViewController {
 		navigationController?.navigationBar.isHidden = false
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.navigationBar.barStyle = .default
-		
-		do {
-			try fetchedResultsController.performFetch()
-		} catch {
-			fatalError("There was an error fetching the list of devices!")
-		}
 	}
 	
 	override func viewWillLayoutSubviews() {
