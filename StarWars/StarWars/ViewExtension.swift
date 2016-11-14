@@ -15,7 +15,7 @@ extension UIView {
 			self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 		} else {
 			// Fallback on earlier versions
-			NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+			NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
 			NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
 		}
 	}
